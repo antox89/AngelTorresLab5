@@ -16,6 +16,7 @@ public class Cinepolis extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         bt_admin_guardar.setVisible(false);
+        bt_admin_agregar.setVisible(false);
         
         Empleado b1 = new Boleteria("Boleteria01", "boleto1", "boleto1", "boleto1@gmail.com", new Date());
         Empleado a1 = new Aseo("Aseo01", "aseo1", "aseo1", "aseo1@gmail.com", new Date());
@@ -61,6 +62,7 @@ public class Cinepolis extends javax.swing.JFrame {
         tf_login_password = new javax.swing.JPasswordField();
         bt_login_signIn = new javax.swing.JButton();
         ppm_admin = new javax.swing.JPopupMenu();
+        jmi_ver = new javax.swing.JMenuItem();
         jmi_modificar = new javax.swing.JMenuItem();
         jmi_eliminar = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -70,7 +72,7 @@ public class Cinepolis extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmi_exit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmi_empleados = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
 
         jLabel1.setText("Nombre:");
@@ -284,6 +286,14 @@ public class Cinepolis extends javax.swing.JFrame {
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
+        jmi_ver.setText("Ver Contacto");
+        jmi_ver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_verActionPerformed(evt);
+            }
+        });
+        ppm_admin.add(jmi_ver);
+
         jmi_modificar.setText("Modificar");
         jmi_modificar.setToolTipText("");
         jmi_modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -325,13 +335,13 @@ public class Cinepolis extends javax.swing.JFrame {
 
         jMenu2.setText("Administrar");
 
-        jMenuItem1.setText("Empleados");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmi_empleados.setText("Empleados");
+        jmi_empleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmi_empleadosActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu2.add(jmi_empleados);
 
         jMenuItem2.setText("jMenuItem2");
         jMenu2.add(jMenuItem2);
@@ -470,12 +480,14 @@ public class Cinepolis extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_admin_agregarMouseClicked
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jmi_empleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_empleadosActionPerformed
+        bt_admin_agregar.setVisible(true);
         jd_admin.pack();
         jd_admin.setModal(true);
         jd_admin.setLocationRelativeTo(this);
         jd_admin.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        
+    }//GEN-LAST:event_jmi_empleadosActionPerformed
 
     private void jt_empleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_empleadosMouseClicked
         
@@ -507,6 +519,7 @@ public class Cinepolis extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_eliminarActionPerformed
 
     private void jmi_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_modificarActionPerformed
+        bt_admin_agregar.setVisible(false);
         bt_admin_guardar.setVisible(true);  
         
         tf_admin_nombre.setText(empleado_seleccionado.getNombre());
@@ -545,7 +558,19 @@ public class Cinepolis extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(jd_admin, "Modificado con éxito");
         limpiarAdmin();
+        bt_admin_agregar.setVisible(true);
+        bt_admin_guardar.setVisible(false); 
     }//GEN-LAST:event_bt_admin_guardarMouseClicked
+
+    private void jmi_verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_verActionPerformed
+        
+        tf_admin_nombre.setText(empleado_seleccionado.getNombre());
+        tf_admin_email.setText(empleado_seleccionado.getEmail());
+        tf_admin_password.setText(empleado_seleccionado.getPassword());
+        tf_admin_usuario.setText(empleado_seleccionado.getUsuario());
+        cb_admin_puesto.setSelectedItem(empleado_seleccionado.getPuesto());
+        jdc_admin_fecha.setDate(empleado_seleccionado.fechaNacimiento);
+    }//GEN-LAST:event_jmi_verActionPerformed
 
     public void limpiarAdmin(){
         tf_admin_nombre.setText("");
@@ -604,7 +629,6 @@ public class Cinepolis extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -618,10 +642,12 @@ public class Cinepolis extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jdc_admin_fecha;
     private javax.swing.JList<String> jl_empleados;
     private javax.swing.JMenuItem jmi_eliminar;
+    private javax.swing.JMenuItem jmi_empleados;
     private javax.swing.JMenuItem jmi_exit;
     private javax.swing.JMenuItem jmi_login;
     private javax.swing.JMenuItem jmi_logout;
     private javax.swing.JMenuItem jmi_modificar;
+    private javax.swing.JMenuItem jmi_ver;
     private javax.swing.JTree jt_empleados;
     private javax.swing.JPopupMenu ppm_admin;
     private javax.swing.JTextField tf_admin_email;
