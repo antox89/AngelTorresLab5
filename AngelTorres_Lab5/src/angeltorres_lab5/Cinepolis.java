@@ -17,6 +17,8 @@ public class Cinepolis extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         bt_admin_guardar.setVisible(false);
         bt_admin_agregar.setVisible(false);
+        bt_boleteria_agregar.setVisible(false);
+        bt_boleteria_guardar.setVisible(false);
         
         Empleado b1 = new Boleteria("Boleteria01", "boleto1", "boleto1", "boleto1@gmail.com", new Date());
         Empleado a1 = new Aseo("Aseo01", "aseo1", "aseo1", "aseo1@gmail.com", new Date());
@@ -53,8 +55,50 @@ public class Cinepolis extends javax.swing.JFrame {
         jl_empleados = new javax.swing.JList<>();
         bt_admin_guardar = new javax.swing.JButton();
         jd_boleteria = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jt_boleteria = new javax.swing.JTree();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        tf_boleteria_nombre = new javax.swing.JTextField();
+        sp_boleteria_duracion = new javax.swing.JSpinner();
+        jLabel13 = new javax.swing.JLabel();
+        cb_boleteria_cat = new javax.swing.JComboBox<>();
+        bt_boleteria_guardar = new javax.swing.JButton();
+        bt_boleteria_agregar = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        tf_boleteria_clasificacion = new javax.swing.JTextField();
         jd_aseo = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jt_boleteria1 = new javax.swing.JTree();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jSpinner2 = new javax.swing.JSpinner();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        cb_boleteria_cat1 = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jd_dulceria = new javax.swing.JDialog();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jt_boleteria2 = new javax.swing.JTree();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jSpinner3 = new javax.swing.JSpinner();
+        jLabel23 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        cb_boleteria_cat2 = new javax.swing.JComboBox<>();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jd_login = new javax.swing.JDialog();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -65,6 +109,10 @@ public class Cinepolis extends javax.swing.JFrame {
         jmi_ver = new javax.swing.JMenuItem();
         jmi_modificar = new javax.swing.JMenuItem();
         jmi_eliminar = new javax.swing.JMenuItem();
+        ppm_boleteria = new javax.swing.JPopupMenu();
+        jmi_boleteria_ver = new javax.swing.JMenuItem();
+        jmi_boleteria_modificar = new javax.swing.JMenuItem();
+        jmi_boleteria_eliminar = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmi_login = new javax.swing.JMenuItem();
@@ -73,7 +121,7 @@ public class Cinepolis extends javax.swing.JFrame {
         jmi_exit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jmi_empleados = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmi_boleteria = new javax.swing.JMenuItem();
 
         jLabel1.setText("Nombre:");
 
@@ -206,37 +254,330 @@ public class Cinepolis extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jd_boleteria.setTitle("Boleteria");
+
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Peliculas");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Terror");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Comedia");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Romance");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Drama");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Accion");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Infantil");
+        treeNode1.add(treeNode2);
+        jt_boleteria.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_boleteria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_boleteriaMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jt_boleteria);
+
+        jLabel9.setText("Nombre:");
+
+        jLabel10.setText("Duración:");
+
+        jLabel11.setText("Categoría:");
+
+        sp_boleteria_duracion.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        jLabel13.setText("mins.");
+
+        cb_boleteria_cat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Terror", "Comedia", "Romance", "Drama", "Acción", "Infantil" }));
+
+        bt_boleteria_guardar.setText("Guardar");
+        bt_boleteria_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_boleteria_guardarMouseClicked(evt);
+            }
+        });
+
+        bt_boleteria_agregar.setText("Agregar");
+        bt_boleteria_agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_boleteria_agregarMouseClicked(evt);
+            }
+        });
+
+        jLabel24.setText("Calsificacion:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tf_boleteria_nombre)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(sp_boleteria_duracion, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel13))
+                    .addComponent(cb_boleteria_cat, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(bt_boleteria_guardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addComponent(bt_boleteria_agregar))
+                    .addComponent(tf_boleteria_clasificacion))
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(tf_boleteria_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(sp_boleteria_duracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(cb_boleteria_cat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(tf_boleteria_clasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bt_boleteria_guardar)
+                            .addComponent(bt_boleteria_agregar))))
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jd_boleteriaLayout = new javax.swing.GroupLayout(jd_boleteria.getContentPane());
         jd_boleteria.getContentPane().setLayout(jd_boleteriaLayout);
         jd_boleteriaLayout.setHorizontalGroup(
             jd_boleteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jd_boleteriaLayout.setVerticalGroup(
             jd_boleteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Peliculas");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Terror");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Comedia");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Romance");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Drama");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Accion");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Infantil");
+        treeNode1.add(treeNode2);
+        jt_boleteria1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane4.setViewportView(jt_boleteria1);
+
+        jLabel14.setText("Nombre:");
+
+        jLabel15.setText("Duración:");
+
+        jLabel16.setText("Categoría:");
+
+        jLabel17.setText("Descripcion:");
+
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        jLabel18.setText("mins.");
+
+        cb_boleteria_cat1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Terror", "Comedia", "Romance", "Drama", "Acción", "Infantil" }));
+
+        jButton3.setText("Guardar");
+
+        jButton4.setText("Agregar");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField3)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel18))
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_boleteria_cat1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4)))
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18))
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(cb_boleteria_cat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(83, 83, 83)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton3)
+                            .addComponent(jButton4))))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jd_aseoLayout = new javax.swing.GroupLayout(jd_aseo.getContentPane());
         jd_aseo.getContentPane().setLayout(jd_aseoLayout);
         jd_aseoLayout.setHorizontalGroup(
             jd_aseoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jd_aseoLayout.setVerticalGroup(
             jd_aseoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Peliculas");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Terror");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Comedia");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Romance");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Drama");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Accion");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Infantil");
+        treeNode1.add(treeNode2);
+        jt_boleteria2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane5.setViewportView(jt_boleteria2);
+
+        jLabel19.setText("Nombre:");
+
+        jLabel20.setText("Duración:");
+
+        jLabel21.setText("Categoría:");
+
+        jLabel22.setText("Descripcion:");
+
+        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        jLabel23.setText("mins.");
+
+        cb_boleteria_cat2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Terror", "Comedia", "Romance", "Drama", "Acción", "Infantil" }));
+
+        jButton5.setText("Guardar");
+
+        jButton6.setText("Agregar");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField5)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel23))
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_boleteria_cat2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton6)))
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23))
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(cb_boleteria_cat2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(83, 83, 83)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton5)
+                            .addComponent(jButton6))))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jd_dulceriaLayout = new javax.swing.GroupLayout(jd_dulceria.getContentPane());
         jd_dulceria.getContentPane().setLayout(jd_dulceriaLayout);
         jd_dulceriaLayout.setHorizontalGroup(
             jd_dulceriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jd_dulceriaLayout.setVerticalGroup(
             jd_dulceriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jd_login.setTitle("Ingreso al Sistema de Cinepoli$");
@@ -311,6 +652,30 @@ public class Cinepolis extends javax.swing.JFrame {
         });
         ppm_admin.add(jmi_eliminar);
 
+        jmi_boleteria_ver.setText("Ver Película");
+        jmi_boleteria_ver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_boleteria_verActionPerformed(evt);
+            }
+        });
+        ppm_boleteria.add(jmi_boleteria_ver);
+
+        jmi_boleteria_modificar.setText("Modificar");
+        jmi_boleteria_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_boleteria_modificarActionPerformed(evt);
+            }
+        });
+        ppm_boleteria.add(jmi_boleteria_modificar);
+
+        jmi_boleteria_eliminar.setText("Eliminar");
+        jmi_boleteria_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_boleteria_eliminarActionPerformed(evt);
+            }
+        });
+        ppm_boleteria.add(jmi_boleteria_eliminar);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cinepoli$");
 
@@ -343,8 +708,13 @@ public class Cinepolis extends javax.swing.JFrame {
         });
         jMenu2.add(jmi_empleados);
 
-        jMenuItem2.setText("jMenuItem2");
-        jMenu2.add(jMenuItem2);
+        jmi_boleteria.setText("Boleteria");
+        jmi_boleteria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_boleteriaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmi_boleteria);
 
         jMenuBar1.add(jMenu2);
 
@@ -572,13 +942,176 @@ public class Cinepolis extends javax.swing.JFrame {
         jdc_admin_fecha.setDate(empleado_seleccionado.fechaNacimiento);
     }//GEN-LAST:event_jmi_verActionPerformed
 
+    private void bt_boleteria_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_boleteria_agregarMouseClicked
+        
+        String nombre, categoria, clasif;
+        int duracion;
+        
+        try{
+            
+            nombre = tf_boleteria_nombre.getText();
+            categoria = cb_boleteria_cat.getSelectedItem().toString();
+            duracion = (Integer)sp_boleteria_duracion.getValue();
+            clasif = tf_boleteria_clasificacion.getText();
+            
+            Pelicula p = new Pelicula(nombre, categoria, duracion, clasif);
+            
+            DefaultTreeModel m = (DefaultTreeModel)jt_boleteria.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode)m.getRoot();
+            
+            if(categoria.equals("Terror")){
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                
+                    if(raiz.getChildAt(i).toString().equals("Terror")){
+                        DefaultMutableTreeNode terror = new DefaultMutableTreeNode(p);
+                        ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(terror);                    
+                    }
+                }
+            }
+            
+            if(categoria.equals("Comedia")){
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if(raiz.getChildAt(i).toString().equals("Comedia")){
+                        DefaultMutableTreeNode comedia = new DefaultMutableTreeNode(p);
+                        ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(comedia);                    
+                    }
+                }
+            }
+            
+            if(categoria.equals("Romance")){
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if(raiz.getChildAt(i).toString().equals("Romance")){
+                        DefaultMutableTreeNode romance = new DefaultMutableTreeNode(p);
+                        ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(romance);                    
+                    }
+                }
+            }
+            
+            if(categoria.equals("Drama")){
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if(raiz.getChildAt(i).toString().equals("Drama")){
+                        DefaultMutableTreeNode drama = new DefaultMutableTreeNode(p);
+                        ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(drama);                    
+                    }
+                }
+            }
+            
+            if(categoria.equals("Accion")){
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if(raiz.getChildAt(i).toString().equals("Accion")){
+                        DefaultMutableTreeNode accion = new DefaultMutableTreeNode(p);
+                        ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(accion);                    
+                    }
+                }
+            }
+            
+            if(categoria.equals("Infantil")){
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if(raiz.getChildAt(i).toString().equals("Infantil")){
+                        DefaultMutableTreeNode infantil = new DefaultMutableTreeNode(p);
+                        ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(infantil);                    
+                    }
+                }
+            }
+            
+            JOptionPane.showMessageDialog(jd_boleteria,"Agregado con éxito");
+            m.reload();
+            limpiarBoletos();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(jd_boleteria,"Error");
+        }
+        
+    }//GEN-LAST:event_bt_boleteria_agregarMouseClicked
+
+    private void jmi_boleteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_boleteriaActionPerformed
+        bt_boleteria_agregar.setVisible(true);
+        jd_boleteria.pack();
+        jd_boleteria.setModal(true);
+        jd_boleteria.setLocationRelativeTo(this);
+        jd_boleteria.setVisible(true);
+    }//GEN-LAST:event_jmi_boleteriaActionPerformed
+
+    private void jt_boleteriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_boleteriaMouseClicked
+        
+        if(evt.isMetaDown()){
+            int row = jt_boleteria.getClosestRowForLocation(evt.getX(), evt.getY());
+            jt_boleteria.setSelectionRow(row);
+            
+            Object v1 = jt_boleteria.getSelectionPath().getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode)v1;
+            if(nodo_seleccionado.getUserObject() instanceof Pelicula){
+                pelicula_seleccionada = (Pelicula)nodo_seleccionado.getUserObject();
+                ppm_boleteria.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jt_boleteriaMouseClicked
+
+    private void jmi_boleteria_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_boleteria_eliminarActionPerformed
+        int response = JOptionPane.showConfirmDialog(this, "¿Desea eliminar la película?","Eliminar Película",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+        if(response == JOptionPane.OK_OPTION){
+            DefaultTreeModel m
+                    = (DefaultTreeModel)jt_boleteria.getModel();
+            m.removeNodeFromParent(nodo_seleccionado);
+            m.reload();
+        }
+    }//GEN-LAST:event_jmi_boleteria_eliminarActionPerformed
+
+    private void jmi_boleteria_verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_boleteria_verActionPerformed
+        tf_boleteria_nombre.setText(pelicula_seleccionada.getNombre());
+        tf_boleteria_clasificacion.setText(pelicula_seleccionada.getClasificacion());
+        cb_boleteria_cat.setSelectedItem(pelicula_seleccionada.getCategoria());
+        sp_boleteria_duracion.setValue(pelicula_seleccionada.getDuracion());
+    }//GEN-LAST:event_jmi_boleteria_verActionPerformed
+
+    private void bt_boleteria_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_boleteria_guardarMouseClicked
+        
+        try{
+            pelicula_seleccionada.setCategoria(cb_boleteria_cat.getSelectedItem().toString());
+            pelicula_seleccionada.setClasificacion(tf_boleteria_clasificacion.getText());
+            pelicula_seleccionada.setDuracion((Integer)sp_boleteria_duracion.getValue());
+            pelicula_seleccionada.setNombre(tf_boleteria_nombre.getText());
+            
+            DefaultTreeModel m
+                    = (DefaultTreeModel)jt_boleteria.getModel();
+            m.reload();
+
+            JOptionPane.showMessageDialog(jd_admin, "Modificado con éxito");
+            limpiarBoletos();
+            bt_boleteria_agregar.setVisible(true);
+            bt_boleteria_guardar.setVisible(false); 
+            
+        }catch(Exception e){
+            
+        } 
+    }//GEN-LAST:event_bt_boleteria_guardarMouseClicked
+
+    private void jmi_boleteria_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_boleteria_modificarActionPerformed
+        bt_boleteria_agregar.setVisible(false);
+        bt_boleteria_guardar.setVisible(true); 
+        
+        tf_boleteria_nombre.setText(pelicula_seleccionada.getNombre());
+        tf_boleteria_clasificacion.setText(pelicula_seleccionada.getClasificacion());
+        sp_boleteria_duracion.setValue(pelicula_seleccionada.getDuracion());
+        cb_boleteria_cat.setSelectedItem(pelicula_seleccionada.getCategoria());
+        
+    }//GEN-LAST:event_jmi_boleteria_modificarActionPerformed
+
     public void limpiarAdmin(){
         tf_admin_nombre.setText("");
         tf_admin_email.setText("");
         tf_admin_password.setText("");
         tf_admin_usuario.setText("");
-        cb_admin_puesto.setSelectedItem("");
+        cb_admin_puesto.setSelectedIndex(0);
         jdc_admin_fecha.setDate(new Date());
+    }
+    
+    public void limpiarBoletos(){
+        tf_boleteria_nombre.setText("");
+        tf_boleteria_clasificacion.setText("");
+        cb_boleteria_cat.setSelectedIndex(0);
+        sp_boleteria_duracion.setValue(0);
+        
     }
     
     public static void main(String args[]) {
@@ -616,24 +1149,59 @@ public class Cinepolis extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_admin_agregar;
     private javax.swing.JButton bt_admin_guardar;
+    private javax.swing.JButton bt_boleteria_agregar;
+    private javax.swing.JButton bt_boleteria_guardar;
     private javax.swing.JButton bt_login_signIn;
     private javax.swing.JComboBox<String> cb_admin_puesto;
+    private javax.swing.JComboBox<String> cb_boleteria_cat;
+    private javax.swing.JComboBox<String> cb_boleteria_cat1;
+    private javax.swing.JComboBox<String> cb_boleteria_cat2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JSpinner jSpinner3;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JDialog jd_admin;
     private javax.swing.JDialog jd_aseo;
     private javax.swing.JDialog jd_boleteria;
@@ -641,6 +1209,10 @@ public class Cinepolis extends javax.swing.JFrame {
     private javax.swing.JDialog jd_login;
     private com.toedter.calendar.JDateChooser jdc_admin_fecha;
     private javax.swing.JList<String> jl_empleados;
+    private javax.swing.JMenuItem jmi_boleteria;
+    private javax.swing.JMenuItem jmi_boleteria_eliminar;
+    private javax.swing.JMenuItem jmi_boleteria_modificar;
+    private javax.swing.JMenuItem jmi_boleteria_ver;
     private javax.swing.JMenuItem jmi_eliminar;
     private javax.swing.JMenuItem jmi_empleados;
     private javax.swing.JMenuItem jmi_exit;
@@ -648,12 +1220,19 @@ public class Cinepolis extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_logout;
     private javax.swing.JMenuItem jmi_modificar;
     private javax.swing.JMenuItem jmi_ver;
+    private javax.swing.JTree jt_boleteria;
+    private javax.swing.JTree jt_boleteria1;
+    private javax.swing.JTree jt_boleteria2;
     private javax.swing.JTree jt_empleados;
     private javax.swing.JPopupMenu ppm_admin;
+    private javax.swing.JPopupMenu ppm_boleteria;
+    private javax.swing.JSpinner sp_boleteria_duracion;
     private javax.swing.JTextField tf_admin_email;
     private javax.swing.JTextField tf_admin_nombre;
     private javax.swing.JTextField tf_admin_password;
     private javax.swing.JTextField tf_admin_usuario;
+    private javax.swing.JTextField tf_boleteria_clasificacion;
+    private javax.swing.JTextField tf_boleteria_nombre;
     private javax.swing.JPasswordField tf_login_password;
     private javax.swing.JTextField tf_login_usuario;
     // End of variables declaration//GEN-END:variables
@@ -662,4 +1241,5 @@ public class Cinepolis extends javax.swing.JFrame {
     ArrayList<Empleado> lista = new ArrayList();
     DefaultMutableTreeNode nodo_seleccionado;
     Empleado empleado_seleccionado;
+    Pelicula pelicula_seleccionada;
 }

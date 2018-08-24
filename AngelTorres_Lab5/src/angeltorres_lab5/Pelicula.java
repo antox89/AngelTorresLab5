@@ -5,13 +5,13 @@ package angeltorres_lab5;
 
 public class Pelicula {
     
-    private String nombre, categoria;
-    private int duracion, clasificacion;
+    private String nombre, categoria, clasificacion;
+    private int duracion;
 
     public Pelicula() {
     }
 
-    public Pelicula(String nombre, String categoria, int duracion, int clasificacion) {
+    public Pelicula(String nombre, String categoria, int duracion, String clasificacion) {
         this.nombre = nombre;
         this.categoria = categoria;
         this.duracion = duracion;
@@ -42,11 +42,11 @@ public class Pelicula {
         this.duracion = duracion;
     }
 
-    public int getClasificacion() {
+    public String getClasificacion() {
         return clasificacion;
     }
 
-    public void setClasificacion(int clasificacion) {
+    public void setClasificacion(String clasificacion) {
         this.clasificacion = clasificacion;
     }
 
