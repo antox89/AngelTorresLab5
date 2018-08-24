@@ -2,6 +2,7 @@
 package angeltorres_lab5;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,7 +42,7 @@ public class Cinepolis extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         tf_login_usuario = new javax.swing.JTextField();
         tf_login_password = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        bt_login_signIn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmi_login = new javax.swing.JMenuItem();
@@ -166,7 +167,12 @@ public class Cinepolis extends javax.swing.JFrame {
 
         jLabel7.setText("Contraseña:");
 
-        jButton1.setText("Sign In");
+        bt_login_signIn.setText("Sign In");
+        bt_login_signIn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_login_signInMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_loginLayout = new javax.swing.GroupLayout(jd_login.getContentPane());
         jd_login.getContentPane().setLayout(jd_loginLayout);
@@ -175,7 +181,7 @@ public class Cinepolis extends javax.swing.JFrame {
             .addGroup(jd_loginLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(bt_login_signIn)
                     .addGroup(jd_loginLayout.createSequentialGroup()
                         .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel7)
@@ -198,7 +204,7 @@ public class Cinepolis extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(tf_login_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(jButton1)
+                .addComponent(bt_login_signIn)
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
@@ -250,6 +256,45 @@ public class Cinepolis extends javax.swing.JFrame {
         jd_login.setVisible(true);
     }//GEN-LAST:event_jmi_loginActionPerformed
 
+    private void bt_login_signInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_login_signInMouseClicked
+        
+        if(tf_login_usuario.getText().equals(admin) && tf_login_password.getText().equals(passAdm)){
+                System.out.println("admin hola");
+         }
+        
+        for (Empleado empleado : lista) {
+            
+            if(empleado instanceof Boleteria){
+                if(tf_login_usuario.getText().equals(((Boleteria) empleado).nombre) && tf_login_password.getText().equals(((Boleteria) empleado).password)){
+                    System.out.println("Hola "+ ((Boleteria)empleado).getNombre()+"\n");
+                }else{
+                    JOptionPane.showMessageDialog(jd_login, "Datos incorrectos");
+                }
+                
+            }
+            
+            if(empleado instanceof Aseo){
+                if(tf_login_usuario.getText().equals(((Aseo) empleado).nombre) && tf_login_password.getText().equals(((Aseo) empleado).password)){
+                    System.out.println("Hola "+ ((Aseo)empleado).getNombre()+"\n");
+                }else{
+                    JOptionPane.showMessageDialog(jd_login, "Datos incorrectos");
+                }
+                
+            }
+            
+            if(empleado instanceof Dulceria){
+                if(tf_login_usuario.getText().equals(((Dulceria) empleado).nombre) && tf_login_password.getText().equals(((Dulceria) empleado).password)){
+                    System.out.println("Hola "+ ((Dulceria)empleado).getNombre()+"\n");
+                }else{
+                    JOptionPane.showMessageDialog(jd_login, "Datos incorrectos");
+                }
+                
+            }
+        }
+        
+        
+    }//GEN-LAST:event_bt_login_signInMouseClicked
+
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -284,7 +329,7 @@ public class Cinepolis extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bt_login_signIn;
     private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
