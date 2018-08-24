@@ -15,6 +15,8 @@ public class Cinepolis extends javax.swing.JFrame {
     public Cinepolis() {
         initComponents();
         this.setLocationRelativeTo(null);
+        bt_admin_guardar.setVisible(false);
+        
         Empleado b1 = new Boleteria("Boleteria01", "boleto1", "boleto1", "boleto1@gmail.com", new Date());
         Empleado a1 = new Aseo("Aseo01", "aseo1", "aseo1", "aseo1@gmail.com", new Date());
         Empleado d1 = new Dulceria("Dulceria01","dulce1","dulce1","dulceria1@gmail.com",new Date());
@@ -48,6 +50,7 @@ public class Cinepolis extends javax.swing.JFrame {
         jt_empleados = new javax.swing.JTree();
         jScrollPane2 = new javax.swing.JScrollPane();
         jl_empleados = new javax.swing.JList<>();
+        bt_admin_guardar = new javax.swing.JButton();
         jd_boleteria = new javax.swing.JDialog();
         jd_aseo = new javax.swing.JDialog();
         jd_dulceria = new javax.swing.JDialog();
@@ -58,9 +61,8 @@ public class Cinepolis extends javax.swing.JFrame {
         tf_login_password = new javax.swing.JPasswordField();
         bt_login_signIn = new javax.swing.JButton();
         ppm_admin = new javax.swing.JPopupMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jmi_modificar = new javax.swing.JMenuItem();
+        jmi_eliminar = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmi_login = new javax.swing.JMenuItem();
@@ -100,10 +102,22 @@ public class Cinepolis extends javax.swing.JFrame {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Aseo");
         treeNode1.add(treeNode2);
         jt_empleados.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_empleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_empleadosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jt_empleados);
 
         jl_empleados.setModel(new DefaultListModel());
         jScrollPane2.setViewportView(jl_empleados);
+
+        bt_admin_guardar.setText("Guardar");
+        bt_admin_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_admin_guardarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,7 +140,10 @@ public class Cinepolis extends javax.swing.JFrame {
                         .addComponent(jdc_admin_fecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
                     .addComponent(cb_admin_puesto, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(bt_admin_agregar)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(bt_admin_guardar)
+                            .addGap(30, 30, 30)
+                            .addComponent(bt_admin_agregar))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(tf_admin_email, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                             .addComponent(tf_admin_nombre))))
@@ -164,7 +181,9 @@ public class Cinepolis extends javax.swing.JFrame {
                     .addComponent(cb_admin_puesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(30, 30, 30)
-                .addComponent(bt_admin_agregar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_admin_agregar)
+                    .addComponent(bt_admin_guardar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(33, Short.MAX_VALUE)
@@ -265,14 +284,22 @@ public class Cinepolis extends javax.swing.JFrame {
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        jMenuItem3.setText("jMenuItem3");
-        ppm_admin.add(jMenuItem3);
+        jmi_modificar.setText("Modificar");
+        jmi_modificar.setToolTipText("");
+        jmi_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_modificarActionPerformed(evt);
+            }
+        });
+        ppm_admin.add(jmi_modificar);
 
-        jMenuItem4.setText("jMenuItem4");
-        ppm_admin.add(jMenuItem4);
-
-        jMenuItem5.setText("jMenuItem5");
-        ppm_admin.add(jMenuItem5);
+        jmi_eliminar.setText("Eliminar");
+        jmi_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminarActionPerformed(evt);
+            }
+        });
+        ppm_admin.add(jmi_eliminar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cinepoli$");
@@ -401,6 +428,7 @@ public class Cinepolis extends javax.swing.JFrame {
                         DefaultMutableTreeNode boleteria = new DefaultMutableTreeNode(e);
                         ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(boleteria);
                         m.reload();
+                        limpiarAdmin();
                     }
                 }
                 modeloLista.addElement(e);
@@ -416,6 +444,7 @@ public class Cinepolis extends javax.swing.JFrame {
                         DefaultMutableTreeNode dulceria = new DefaultMutableTreeNode(e);
                         ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(dulceria);
                         m.reload();
+                        limpiarAdmin();
                     }
                 }
                 modeloLista.addElement(e);
@@ -429,21 +458,11 @@ public class Cinepolis extends javax.swing.JFrame {
                         DefaultMutableTreeNode aseo = new DefaultMutableTreeNode(e);
                         ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(aseo);
                         m.reload();
+                        limpiarAdmin();
                     }
                 }
                 modeloLista.addElement(e);
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
             
         }catch(Exception e){
@@ -458,6 +477,84 @@ public class Cinepolis extends javax.swing.JFrame {
         jd_admin.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jt_empleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_empleadosMouseClicked
+        
+        if(evt.isMetaDown()){
+            int row = jt_empleados.getClosestRowForLocation(evt.getX(), evt.getY());
+            jt_empleados.setSelectionRow(row);
+            
+            Object v1 = jt_empleados.getSelectionPath().getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode)v1;
+            if(nodo_seleccionado.getUserObject() instanceof Empleado){
+                empleado_seleccionado = (Empleado)nodo_seleccionado.getUserObject();
+                ppm_admin.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+        
+    }//GEN-LAST:event_jt_empleadosMouseClicked
+
+    private void jmi_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarActionPerformed
+        
+        int response = JOptionPane.showConfirmDialog(this, "¿Desea eliminar al empleado?","Eliminar Empleado",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+        if(response == JOptionPane.OK_OPTION){
+            DefaultTreeModel m
+                    = (DefaultTreeModel)jt_empleados.getModel();
+            m.removeNodeFromParent(nodo_seleccionado);
+            m.reload();
+        }
+        
+    }//GEN-LAST:event_jmi_eliminarActionPerformed
+
+    private void jmi_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_modificarActionPerformed
+        bt_admin_guardar.setVisible(true);  
+        
+        tf_admin_nombre.setText(empleado_seleccionado.getNombre());
+        tf_admin_email.setText(empleado_seleccionado.getEmail());
+        tf_admin_password.setText(empleado_seleccionado.getPassword());
+        tf_admin_usuario.setText(empleado_seleccionado.getUsuario());
+        cb_admin_puesto.setSelectedItem(empleado_seleccionado.getPuesto());
+        jdc_admin_fecha.setDate(empleado_seleccionado.fechaNacimiento);
+        
+        
+        
+    }//GEN-LAST:event_jmi_modificarActionPerformed
+
+    private void bt_admin_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_admin_guardarMouseClicked
+        
+        String nombre,usuario,password,email,puesto;
+        Date fechaNacimiento;
+        
+        nombre =tf_admin_nombre.getText();
+        usuario = tf_admin_usuario.getText();
+        password = tf_admin_password.getText();
+        email = tf_admin_email.getText();
+        puesto = cb_admin_puesto.getSelectedItem().toString();
+        fechaNacimiento = jdc_admin_fecha.getDate();
+        
+        empleado_seleccionado.setNombre(nombre);
+        empleado_seleccionado.setUsuario(usuario);
+        empleado_seleccionado.setPassword(password);
+        empleado_seleccionado.setPuesto(puesto);
+        empleado_seleccionado.setEmail(email);
+        empleado_seleccionado.setFechaNacimiento(fechaNacimiento);
+        
+        DefaultTreeModel m
+                    = (DefaultTreeModel)jt_empleados.getModel();
+        m.reload();
+        
+        JOptionPane.showMessageDialog(jd_admin, "Modificado con éxito");
+        limpiarAdmin();
+    }//GEN-LAST:event_bt_admin_guardarMouseClicked
+
+    public void limpiarAdmin(){
+        tf_admin_nombre.setText("");
+        tf_admin_email.setText("");
+        tf_admin_password.setText("");
+        tf_admin_usuario.setText("");
+        cb_admin_puesto.setSelectedItem("");
+        jdc_admin_fecha.setDate(new Date());
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -493,6 +590,7 @@ public class Cinepolis extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_admin_agregar;
+    private javax.swing.JButton bt_admin_guardar;
     private javax.swing.JButton bt_login_signIn;
     private javax.swing.JComboBox<String> cb_admin_puesto;
     private javax.swing.JLabel jLabel1;
@@ -508,9 +606,6 @@ public class Cinepolis extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -522,9 +617,11 @@ public class Cinepolis extends javax.swing.JFrame {
     private javax.swing.JDialog jd_login;
     private com.toedter.calendar.JDateChooser jdc_admin_fecha;
     private javax.swing.JList<String> jl_empleados;
+    private javax.swing.JMenuItem jmi_eliminar;
     private javax.swing.JMenuItem jmi_exit;
     private javax.swing.JMenuItem jmi_login;
     private javax.swing.JMenuItem jmi_logout;
+    private javax.swing.JMenuItem jmi_modificar;
     private javax.swing.JTree jt_empleados;
     private javax.swing.JPopupMenu ppm_admin;
     private javax.swing.JTextField tf_admin_email;
@@ -537,4 +634,6 @@ public class Cinepolis extends javax.swing.JFrame {
 
     String admin="admin", passAdm="admin123";
     ArrayList<Empleado> lista = new ArrayList();
+    DefaultMutableTreeNode nodo_seleccionado;
+    Empleado empleado_seleccionado;
 }
