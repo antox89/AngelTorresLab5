@@ -815,7 +815,6 @@ public class Cinepolis extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_loginActionPerformed
 
     private void bt_login_signInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_login_signInMouseClicked
-        String s ="";
         
         for (Empleado empleado : lista) {
             if(empleado instanceof Aseo){
@@ -828,6 +827,8 @@ public class Cinepolis extends javax.swing.JFrame {
                     jmi_boleteria.setVisible(false);
                     jmi_empleados.setVisible(false);
                     
+                    jmi_login.setEnabled(false);
+                    jmi_logout.setEnabled(true);
                     jd_login.dispose();
                     tf_login_password.setText("");
                     tf_login_usuario.setText("");
@@ -841,7 +842,8 @@ public class Cinepolis extends javax.swing.JFrame {
                     System.out.println("Hola "+ ((Boleteria)empleado).getNombre()+"\n");
                     
                     
-                    
+                    jmi_login.setEnabled(false);
+                    jmi_logout.setEnabled(true);
                     jmi_aseo.setVisible(false);
                     jmi_dulceria.setVisible(false);
                     jmi_boleteria.setVisible(true);
@@ -864,6 +866,8 @@ public class Cinepolis extends javax.swing.JFrame {
                     jmi_boleteria.setVisible(false);
                     jmi_empleados.setVisible(false);
                     
+                    jmi_login.setEnabled(false);
+                    jmi_logout.setEnabled(true);
                     jd_login.dispose();
                     tf_login_password.setText("");
                     tf_login_usuario.setText("");
@@ -879,6 +883,8 @@ public class Cinepolis extends javax.swing.JFrame {
                 jmi_boleteria.setVisible(true);
                 jmi_empleados.setVisible(true);
                 
+                jmi_login.setEnabled(false);
+                jmi_logout.setEnabled(true);
                 jd_login.dispose();
                 tf_login_password.setText("");
                 tf_login_usuario.setText("");
