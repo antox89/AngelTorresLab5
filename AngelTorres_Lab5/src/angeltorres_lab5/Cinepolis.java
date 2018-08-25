@@ -24,6 +24,11 @@ public class Cinepolis extends javax.swing.JFrame {
         bt_aseo_agregar.setVisible(false);
         bt_aseo_guardar.setVisible(false);
         
+        jmi_aseo.setVisible(false);
+        jmi_dulceria.setVisible(false);
+        jmi_boleteria.setVisible(false);
+        jmi_empleados.setVisible(false);
+        
         Empleado b1 = new Boleteria("Boleteria01", "boleto1", "boleto1", "boleto1@gmail.com", new Date());
         Empleado a1 = new Aseo("Aseo01", "aseo1", "aseo1", "aseo1@gmail.com", new Date());
         Empleado d1 = new Dulceria("Dulceria01","dulce1","dulce1","dulceria1@gmail.com",new Date());
@@ -736,6 +741,12 @@ public class Cinepolis extends javax.swing.JFrame {
         jMenu1.add(jmi_login);
 
         jmi_logout.setText("Log Out");
+        jmi_logout.setEnabled(false);
+        jmi_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_logoutActionPerformed(evt);
+            }
+        });
         jMenu1.add(jmi_logout);
         jMenu1.add(jSeparator1);
 
@@ -804,37 +815,77 @@ public class Cinepolis extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_loginActionPerformed
 
     private void bt_login_signInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_login_signInMouseClicked
+        String s ="";
+        
+        for (Empleado empleado : lista) {
+            if(empleado instanceof Aseo){
+                if(empleado.getUsuario().equals(tf_login_usuario.getText()) && empleado.getPassword().equals(tf_login_password.getText())){
+                    System.out.println("Hola "+ ((Aseo)empleado).getNombre()+"\n");
+                    
+                    
+                    jmi_aseo.setVisible(true);
+                    jmi_dulceria.setVisible(false);
+                    jmi_boleteria.setVisible(false);
+                    jmi_empleados.setVisible(false);
+                    
+                    jd_login.dispose();
+                    tf_login_password.setText("");
+                    tf_login_usuario.setText("");
+                }break;
+            }break;
+        }
+        
+        for (Empleado empleado : lista) {
+            if(empleado instanceof Boleteria){
+                if(empleado.getUsuario().equals(tf_login_usuario.getText()) && empleado.getPassword().equals(tf_login_password.getText())){
+                    System.out.println("Hola "+ ((Boleteria)empleado).getNombre()+"\n");
+                    
+                    
+                    
+                    jmi_aseo.setVisible(false);
+                    jmi_dulceria.setVisible(false);
+                    jmi_boleteria.setVisible(true);
+                    jmi_empleados.setVisible(false);
+                    jd_login.dispose();
+                    tf_login_password.setText("");
+                    tf_login_usuario.setText("");
+                }break;
+            }break;
+        }
+        
+        for (Empleado empleado : lista) {
+            if(empleado instanceof Dulceria){
+                if(empleado.getUsuario().equals(tf_login_usuario.getText()) && empleado.getPassword().equals(tf_login_password.getText())){
+                    System.out.println("Hola "+ ((Dulceria)empleado).getNombre()+"\n");
+                    
+                    
+                    jmi_aseo.setVisible(false);
+                    jmi_dulceria.setVisible(true);
+                    jmi_boleteria.setVisible(false);
+                    jmi_empleados.setVisible(false);
+                    
+                    jd_login.dispose();
+                    tf_login_password.setText("");
+                    tf_login_usuario.setText("");
+                }break;
+            }break;
+        }
         
         if(tf_login_usuario.getText().equals(admin) && tf_login_password.getText().equals(passAdm)){
                 System.out.println("admin hola");
-         }
-        
-        for (Empleado empleado : lista) {
-            
-            if(empleado instanceof Boleteria){
-                if(tf_login_usuario.getText().equals(((Boleteria) empleado).nombre) && tf_login_password.getText().equals(((Boleteria) empleado).password)){
-                    System.out.println("entré");
-                    System.out.println("Hola "+ ((Boleteria)empleado).getNombre()+"\n");
                 
+                jmi_aseo.setVisible(true);
+                jmi_dulceria.setVisible(true);
+                jmi_boleteria.setVisible(true);
+                jmi_empleados.setVisible(true);
                 
-            }
-            
-            if(empleado instanceof Aseo){
-                if(tf_login_usuario.getText().equals(((Aseo) empleado).nombre) && tf_login_password.getText().equals(((Aseo) empleado).password)){
-                    System.out.println("Hola "+ ((Aseo)empleado).getNombre()+"\n");
-                }
-                
-            }
-            
-            if(empleado instanceof Dulceria){
-                if(tf_login_usuario.getText().equals(((Dulceria) empleado).nombre) && tf_login_password.getText().equals(((Dulceria) empleado).password)){
-                    System.out.println("Hola "+ ((Dulceria)empleado).getNombre()+"\n");
-                }
-                
-            }
-            
-            }
+                jd_login.dispose();
+                tf_login_password.setText("");
+                tf_login_usuario.setText("");
         }
+        
+        
+        
         
         
     }//GEN-LAST:event_bt_login_signInMouseClicked
@@ -864,6 +915,7 @@ public class Cinepolis extends javax.swing.JFrame {
             if(puesto.equals("Boleteria")){
                 puesto = "Boleteria";
                 e = new Boleteria(nombre, usuario, password, email, fechaNacimiento);
+                lista.add(e);
                 for (int i = 0; i < raiz.getChildCount(); i++) {
                 
                     if(raiz.getChildAt(i).toString().equals("Boleteria")){
@@ -879,7 +931,7 @@ public class Cinepolis extends javax.swing.JFrame {
             if(puesto.equals("Dulceria")){
                 puesto = "Dulceria";
                 e = new Dulceria(nombre, usuario, password, email, fechaNacimiento);
-                
+                lista.add(e);
                 for (int i = 0; i < raiz.getChildCount(); i++) {
                 
                     if(raiz.getChildAt(i).toString().equals("Dulceria")){
@@ -894,6 +946,7 @@ public class Cinepolis extends javax.swing.JFrame {
             if(puesto.equals("Aseo")){
                 puesto = "Aseo";
                 e = new Aseo(nombre, usuario, password, email, fechaNacimiento);
+                lista.add(e);
                 for (int i = 0; i < raiz.getChildCount(); i++) {
                 
                     if(raiz.getChildAt(i).toString().equals("Aseo")){
@@ -1409,6 +1462,15 @@ public class Cinepolis extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jd_aseo, "Error");
         } 
     }//GEN-LAST:event_bt_aseo_guardarMouseClicked
+
+    private void jmi_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_logoutActionPerformed
+        jmi_aseo.setVisible(false);
+        jmi_dulceria.setVisible(false);
+        jmi_boleteria.setVisible(false);
+        jmi_empleados.setVisible(false);
+        jmi_login.setEnabled(true);
+        jmi_logout.setEnabled(false);
+    }//GEN-LAST:event_jmi_logoutActionPerformed
 
     public void limpiarAdmin(){
         tf_admin_nombre.setText("");
