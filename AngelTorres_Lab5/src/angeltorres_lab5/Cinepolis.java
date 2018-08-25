@@ -19,6 +19,10 @@ public class Cinepolis extends javax.swing.JFrame {
         bt_admin_agregar.setVisible(false);
         bt_boleteria_agregar.setVisible(false);
         bt_boleteria_guardar.setVisible(false);
+        bt_dulceria_agregar.setVisible(false);
+        bt_dulceria_guardar.setVisible(false);
+        bt_aseo_agregar.setVisible(false);
+        bt_aseo_guardar.setVisible(false);
         
         Empleado b1 = new Boleteria("Boleteria01", "boleto1", "boleto1", "boleto1@gmail.com", new Date());
         Empleado a1 = new Aseo("Aseo01", "aseo1", "aseo1", "aseo1@gmail.com", new Date());
@@ -72,33 +76,27 @@ public class Cinepolis extends javax.swing.JFrame {
         jd_aseo = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jt_boleteria1 = new javax.swing.JTree();
+        jt_aseo = new javax.swing.JTree();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        tf_aseo_nombre = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
-        jLabel18 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        cb_boleteria_cat1 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        tf_aseo_descripcion = new javax.swing.JTextField();
+        cb_aseo_categoria = new javax.swing.JComboBox<>();
+        bt_aseo_guardar = new javax.swing.JButton();
+        bt_aseo_agregar = new javax.swing.JButton();
         jd_dulceria = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jt_boleteria2 = new javax.swing.JTree();
+        jt_dulceria = new javax.swing.JTree();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        tf_dulceria_nombre = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
-        jLabel23 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        cb_boleteria_cat2 = new javax.swing.JComboBox<>();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        tf_dulceria_sabor = new javax.swing.JTextField();
+        cb_dulceria_cat = new javax.swing.JComboBox<>();
+        bt_dulceria_guardar = new javax.swing.JButton();
+        bt_dulceria_agregar = new javax.swing.JButton();
         jd_login = new javax.swing.JDialog();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -113,6 +111,14 @@ public class Cinepolis extends javax.swing.JFrame {
         jmi_boleteria_ver = new javax.swing.JMenuItem();
         jmi_boleteria_modificar = new javax.swing.JMenuItem();
         jmi_boleteria_eliminar = new javax.swing.JMenuItem();
+        ppm_dulceria = new javax.swing.JPopupMenu();
+        jmi_dulceria_ver = new javax.swing.JMenuItem();
+        jmi_dulceria_modificar = new javax.swing.JMenuItem();
+        jmi_dulceria_eliminar = new javax.swing.JMenuItem();
+        ppm_aseo = new javax.swing.JPopupMenu();
+        jmi_aseo_ver = new javax.swing.JMenuItem();
+        jmi_aseo_modificar = new javax.swing.JMenuItem();
+        jmi_aseo_eliminar = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmi_login = new javax.swing.JMenuItem();
@@ -122,6 +128,8 @@ public class Cinepolis extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jmi_empleados = new javax.swing.JMenuItem();
         jmi_boleteria = new javax.swing.JMenuItem();
+        jmi_dulceria = new javax.swing.JMenuItem();
+        jmi_aseo = new javax.swing.JMenuItem();
 
         jLabel1.setText("Nombre:");
 
@@ -374,39 +382,42 @@ public class Cinepolis extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Peliculas");
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Terror");
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Implementos Limpieza");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Pisos");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Comedia");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Vidrios");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Romance");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Mesas");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Drama");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Accion");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Infantil");
-        treeNode1.add(treeNode2);
-        jt_boleteria1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane4.setViewportView(jt_boleteria1);
+        jt_aseo.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_aseo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_aseoMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jt_aseo);
 
         jLabel14.setText("Nombre:");
 
-        jLabel15.setText("Duración:");
-
-        jLabel16.setText("Categoría:");
+        jLabel16.setText("Función");
 
         jLabel17.setText("Descripcion:");
 
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        cb_aseo_categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pisos", "Vidrios", "Mesas" }));
 
-        jLabel18.setText("mins.");
+        bt_aseo_guardar.setText("Guardar");
+        bt_aseo_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_aseo_guardarMouseClicked(evt);
+            }
+        });
 
-        cb_boleteria_cat1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Terror", "Comedia", "Romance", "Drama", "Acción", "Infantil" }));
-
-        jButton3.setText("Guardar");
-
-        jButton4.setText("Agregar");
+        bt_aseo_agregar.setText("Agregar");
+        bt_aseo_agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_aseo_agregarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -416,25 +427,20 @@ public class Cinepolis extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel17)
-                    .addComponent(jLabel15)
                     .addComponent(jLabel16)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField3)
+                    .addComponent(tf_aseo_nombre)
+                    .addComponent(tf_aseo_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_aseo_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel18))
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_boleteria_cat1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(bt_aseo_guardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)))
+                        .addComponent(bt_aseo_agregar)))
                 .addGap(48, 48, 48)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,24 +451,19 @@ public class Cinepolis extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18))
-                        .addGap(9, 9, 9)
+                            .addComponent(tf_aseo_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tf_aseo_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
-                            .addComponent(cb_boleteria_cat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cb_aseo_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(83, 83, 83)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4))))
+                            .addComponent(bt_aseo_guardar)
+                            .addComponent(bt_aseo_agregar))))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
 
@@ -477,39 +478,46 @@ public class Cinepolis extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Peliculas");
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Terror");
+        jd_dulceria.setTitle("Dulceria");
+
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Dulces");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Chocolate");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Comedia");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Gomita");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Romance");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Paleta");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Drama");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Chicle");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Accion");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Infantil");
-        treeNode1.add(treeNode2);
-        jt_boleteria2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane5.setViewportView(jt_boleteria2);
+        jt_dulceria.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_dulceria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_dulceriaMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(jt_dulceria);
 
         jLabel19.setText("Nombre:");
 
-        jLabel20.setText("Duración:");
-
         jLabel21.setText("Categoría:");
 
-        jLabel22.setText("Descripcion:");
+        jLabel22.setText("Sabor:");
 
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        cb_dulceria_cat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chocolate", "Gomita", "Paleta", "Chicle" }));
 
-        jLabel23.setText("mins.");
+        bt_dulceria_guardar.setText("Guardar");
+        bt_dulceria_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_dulceria_guardarMouseClicked(evt);
+            }
+        });
 
-        cb_boleteria_cat2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Terror", "Comedia", "Romance", "Drama", "Acción", "Infantil" }));
-
-        jButton5.setText("Guardar");
-
-        jButton6.setText("Agregar");
+        bt_dulceria_agregar.setText("Agregar");
+        bt_dulceria_agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_dulceria_agregarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -519,22 +527,17 @@ public class Cinepolis extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel22)
-                    .addComponent(jLabel20)
                     .addComponent(jLabel21)
                     .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField5)
+                    .addComponent(tf_dulceria_nombre)
+                    .addComponent(tf_dulceria_sabor, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_dulceria_cat, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel23))
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_boleteria_cat2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton5)
+                        .addComponent(bt_dulceria_guardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6)))
+                        .addComponent(bt_dulceria_agregar)))
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(92, Short.MAX_VALUE))
@@ -548,24 +551,19 @@ public class Cinepolis extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel19)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tf_dulceria_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel20)
-                            .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel23))
-                        .addGap(9, 9, 9)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel22)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tf_dulceria_sabor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21)
-                            .addComponent(cb_boleteria_cat2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(83, 83, 83)
+                            .addComponent(cb_dulceria_cat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(122, 122, 122)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton5)
-                            .addComponent(jButton6))))
+                            .addComponent(bt_dulceria_guardar)
+                            .addComponent(bt_dulceria_agregar))))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
 
@@ -676,6 +674,54 @@ public class Cinepolis extends javax.swing.JFrame {
         });
         ppm_boleteria.add(jmi_boleteria_eliminar);
 
+        jmi_dulceria_ver.setText("Ver Dulce");
+        jmi_dulceria_ver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_dulceria_verActionPerformed(evt);
+            }
+        });
+        ppm_dulceria.add(jmi_dulceria_ver);
+
+        jmi_dulceria_modificar.setText("Modificar");
+        jmi_dulceria_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_dulceria_modificarActionPerformed(evt);
+            }
+        });
+        ppm_dulceria.add(jmi_dulceria_modificar);
+
+        jmi_dulceria_eliminar.setText("Eliminar");
+        jmi_dulceria_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_dulceria_eliminarActionPerformed(evt);
+            }
+        });
+        ppm_dulceria.add(jmi_dulceria_eliminar);
+
+        jmi_aseo_ver.setText("Ver");
+        jmi_aseo_ver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_aseo_verActionPerformed(evt);
+            }
+        });
+        ppm_aseo.add(jmi_aseo_ver);
+
+        jmi_aseo_modificar.setText("Modificar");
+        jmi_aseo_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_aseo_modificarActionPerformed(evt);
+            }
+        });
+        ppm_aseo.add(jmi_aseo_modificar);
+
+        jmi_aseo_eliminar.setText("Eliminar");
+        jmi_aseo_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_aseo_eliminarActionPerformed(evt);
+            }
+        });
+        ppm_aseo.add(jmi_aseo_eliminar);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cinepoli$");
 
@@ -715,6 +761,22 @@ public class Cinepolis extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jmi_boleteria);
+
+        jmi_dulceria.setText("Dulceria");
+        jmi_dulceria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_dulceriaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmi_dulceria);
+
+        jmi_aseo.setText("Aseo");
+        jmi_aseo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_aseoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmi_aseo);
 
         jMenuBar1.add(jMenu2);
 
@@ -1076,13 +1138,13 @@ public class Cinepolis extends javax.swing.JFrame {
                     = (DefaultTreeModel)jt_boleteria.getModel();
             m.reload();
 
-            JOptionPane.showMessageDialog(jd_admin, "Modificado con éxito");
+            JOptionPane.showMessageDialog(jd_boleteria, "Modificado con éxito");
             limpiarBoletos();
             bt_boleteria_agregar.setVisible(true);
             bt_boleteria_guardar.setVisible(false); 
             
         }catch(Exception e){
-            
+            JOptionPane.showMessageDialog(jd_boleteria, "Error");
         } 
     }//GEN-LAST:event_bt_boleteria_guardarMouseClicked
 
@@ -1096,6 +1158,257 @@ public class Cinepolis extends javax.swing.JFrame {
         cb_boleteria_cat.setSelectedItem(pelicula_seleccionada.getCategoria());
         
     }//GEN-LAST:event_jmi_boleteria_modificarActionPerformed
+
+    private void bt_dulceria_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_dulceria_agregarMouseClicked
+        
+        String nombre, sabor, categoria;
+        try{
+            
+            nombre = tf_dulceria_nombre.getText();
+            sabor = tf_dulceria_sabor.getText();
+            categoria = cb_dulceria_cat.getSelectedItem().toString();
+            
+            Dulce c = new Dulce(nombre, sabor, categoria);
+            
+            DefaultTreeModel m = (DefaultTreeModel)jt_dulceria.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode)m.getRoot();
+            
+            if(categoria.equals("Chocolate")){
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                
+                    if(raiz.getChildAt(i).toString().equals("Chocolate")){
+                        DefaultMutableTreeNode chocolate = new DefaultMutableTreeNode(c);
+                        ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(chocolate);                    
+                    }
+                }
+            }
+            if(categoria.equals("Gomita")){
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                
+                    if(raiz.getChildAt(i).toString().equals("Gomita")){
+                        DefaultMutableTreeNode gomita = new DefaultMutableTreeNode(c);
+                        ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(gomita);                    
+                    }
+                }
+            }
+            if(categoria.equals("Paleta")){
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                
+                    if(raiz.getChildAt(i).toString().equals("Paleta")){
+                        DefaultMutableTreeNode paleta = new DefaultMutableTreeNode(c);
+                        ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(paleta);                    
+                    }
+                }
+            }
+            if(categoria.equals("Chicle")){
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                
+                    if(raiz.getChildAt(i).toString().equals("Chicle")){
+                        DefaultMutableTreeNode chicle = new DefaultMutableTreeNode(c);
+                        ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(chicle);                    
+                    }
+                }
+            }
+            
+            JOptionPane.showMessageDialog(jd_dulceria,"Agregado con éxito");
+            m.reload();
+            limpiarDulces();
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(jd_dulceria, "Error");
+        }
+    }//GEN-LAST:event_bt_dulceria_agregarMouseClicked
+
+    private void jt_dulceriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_dulceriaMouseClicked
+        if(evt.isMetaDown()){
+            int row = jt_dulceria.getClosestRowForLocation(evt.getX(), evt.getY());
+            jt_dulceria.setSelectionRow(row);
+            
+            Object v1 = jt_dulceria.getSelectionPath().getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode)v1;
+            if(nodo_seleccionado.getUserObject() instanceof Dulce){
+                dulce_seleccionado = (Dulce)nodo_seleccionado.getUserObject();
+                ppm_dulceria.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jt_dulceriaMouseClicked
+
+    private void jmi_dulceria_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_dulceria_eliminarActionPerformed
+        int response = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el dulce?","Eliminar Dulces",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+        if(response == JOptionPane.OK_OPTION){
+            DefaultTreeModel m
+                    = (DefaultTreeModel)jt_dulceria.getModel();
+            m.removeNodeFromParent(nodo_seleccionado);
+            m.reload();
+        }
+    }//GEN-LAST:event_jmi_dulceria_eliminarActionPerformed
+
+    private void jmi_dulceria_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_dulceria_modificarActionPerformed
+        bt_dulceria_agregar.setVisible(false);
+        bt_dulceria_guardar.setVisible(true); 
+        
+        tf_dulceria_nombre.setText(dulce_seleccionado.getNombre());
+        tf_dulceria_sabor.setText(dulce_seleccionado.getSabor());
+        cb_dulceria_cat.setSelectedItem(dulce_seleccionado.getCategoria());
+    }//GEN-LAST:event_jmi_dulceria_modificarActionPerformed
+
+    private void jmi_dulceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_dulceriaActionPerformed
+        bt_dulceria_agregar.setVisible(true);
+        jd_dulceria.pack();
+        jd_dulceria.setModal(true);
+        jd_dulceria.setLocationRelativeTo(this);
+        jd_dulceria.setVisible(true);
+    }//GEN-LAST:event_jmi_dulceriaActionPerformed
+
+    private void bt_dulceria_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_dulceria_guardarMouseClicked
+        try{
+            dulce_seleccionado.setNombre(tf_dulceria_nombre.getText());
+            dulce_seleccionado.setCategoria(cb_dulceria_cat.getSelectedItem().toString());
+            dulce_seleccionado.setSabor(tf_dulceria_sabor.getText());
+            
+            DefaultTreeModel m
+                    = (DefaultTreeModel)jt_dulceria.getModel();
+            m.reload();
+
+            JOptionPane.showMessageDialog(jd_dulceria, "Modificado con éxito");
+            limpiarDulces();
+            bt_dulceria_agregar.setVisible(true);
+            bt_dulceria_guardar.setVisible(false); 
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(jd_dulceria, "Error");
+        } 
+    }//GEN-LAST:event_bt_dulceria_guardarMouseClicked
+
+    private void jmi_dulceria_verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_dulceria_verActionPerformed
+        tf_dulceria_nombre.setText(dulce_seleccionado.getNombre());
+        tf_dulceria_sabor.setText(dulce_seleccionado.getSabor());
+        cb_dulceria_cat.setSelectedItem(dulce_seleccionado.getCategoria());
+    }//GEN-LAST:event_jmi_dulceria_verActionPerformed
+
+    private void bt_aseo_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_aseo_agregarMouseClicked
+        String nombre, descripcion, funcion;
+        
+        try{
+            nombre = tf_aseo_nombre.getText();
+            descripcion = tf_aseo_descripcion.getText();
+            funcion = cb_aseo_categoria.getSelectedItem().toString();
+            
+            ImplementoLimpieza iL = new ImplementoLimpieza(nombre, descripcion, funcion);
+            
+            DefaultTreeModel m = (DefaultTreeModel)jt_aseo.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode)m.getRoot();
+            
+            if(funcion.equals("Pisos")){
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                
+                    if(raiz.getChildAt(i).toString().equals("Pisos")){
+                        DefaultMutableTreeNode pisos = new DefaultMutableTreeNode(iL);
+                        ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(pisos);                    
+                    }
+                }
+            }
+            if(funcion.equals("Vidrios")){
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                
+                    if(raiz.getChildAt(i).toString().equals("Vidrios")){
+                        DefaultMutableTreeNode vidrios = new DefaultMutableTreeNode(iL);
+                        ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(vidrios);                    
+                    }
+                }
+            }
+            
+            if(funcion.equals("Mesas")){
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                
+                    if(raiz.getChildAt(i).toString().equals("Mesas")){
+                        DefaultMutableTreeNode mesas = new DefaultMutableTreeNode(iL);
+                        ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(mesas);                    
+                    }
+                }
+            }
+            
+            JOptionPane.showMessageDialog(jd_aseo,"Agregado con éxito");
+            m.reload();
+            limpiarAseo();
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(jd_aseo, "Error");
+        }
+    }//GEN-LAST:event_bt_aseo_agregarMouseClicked
+
+    private void jt_aseoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_aseoMouseClicked
+        if(evt.isMetaDown()){
+            int row = jt_aseo.getClosestRowForLocation(evt.getX(), evt.getY());
+            jt_aseo.setSelectionRow(row);
+            
+            Object v1 = jt_aseo.getSelectionPath().getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode)v1;
+            if(nodo_seleccionado.getUserObject() instanceof ImplementoLimpieza){
+                aseo_seleccionado = (ImplementoLimpieza)nodo_seleccionado.getUserObject();
+                ppm_aseo.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jt_aseoMouseClicked
+
+    private void jmi_aseo_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_aseo_eliminarActionPerformed
+        int response = JOptionPane.showConfirmDialog(this,
+                "¿Desea eliminar el implemento de limpieza?",
+                "Eliminar Dulces",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+        if(response == JOptionPane.OK_OPTION){
+            DefaultTreeModel m
+                    = (DefaultTreeModel)jt_aseo.getModel();
+            m.removeNodeFromParent(nodo_seleccionado);
+            m.reload();
+        }
+    }//GEN-LAST:event_jmi_aseo_eliminarActionPerformed
+
+    private void jmi_aseo_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_aseo_modificarActionPerformed
+        bt_aseo_agregar.setVisible(false);
+        bt_aseo_guardar.setVisible(true); 
+        
+        tf_aseo_nombre.setText(aseo_seleccionado.getNombre());
+        tf_aseo_descripcion.setText(aseo_seleccionado.getNombre());
+        cb_aseo_categoria.setSelectedItem(aseo_seleccionado.getNombre());
+        
+    }//GEN-LAST:event_jmi_aseo_modificarActionPerformed
+
+    private void jmi_aseo_verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_aseo_verActionPerformed
+        tf_aseo_nombre.setText(aseo_seleccionado.getNombre());
+        tf_aseo_descripcion.setText(aseo_seleccionado.getNombre());
+        cb_aseo_categoria.setSelectedItem(aseo_seleccionado.getNombre());
+    }//GEN-LAST:event_jmi_aseo_verActionPerformed
+
+    private void jmi_aseoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_aseoActionPerformed
+        bt_aseo_agregar.setVisible(true);
+        jd_aseo.pack();
+        jd_aseo.setModal(true);
+        jd_aseo.setLocationRelativeTo(this);
+        jd_aseo.setVisible(true);
+    }//GEN-LAST:event_jmi_aseoActionPerformed
+
+    private void bt_aseo_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_aseo_guardarMouseClicked
+        try{
+            
+            aseo_seleccionado.setNombre(tf_aseo_nombre.getText());
+            aseo_seleccionado.setDescripcion(tf_aseo_descripcion.getText());
+            aseo_seleccionado.setFuncion(cb_aseo_categoria.getSelectedItem().toString());
+            
+            DefaultTreeModel m
+                    = (DefaultTreeModel)jt_aseo.getModel();
+            m.reload();
+
+            JOptionPane.showMessageDialog(jd_aseo, "Modificado con éxito");
+            limpiarAseo();
+            bt_aseo_agregar.setVisible(true);
+            bt_aseo_guardar.setVisible(false); 
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(jd_aseo, "Error");
+        } 
+    }//GEN-LAST:event_bt_aseo_guardarMouseClicked
 
     public void limpiarAdmin(){
         tf_admin_nombre.setText("");
@@ -1111,7 +1424,18 @@ public class Cinepolis extends javax.swing.JFrame {
         tf_boleteria_clasificacion.setText("");
         cb_boleteria_cat.setSelectedIndex(0);
         sp_boleteria_duracion.setValue(0);
-        
+    }
+    
+    public void limpiarDulces(){
+        tf_dulceria_nombre.setText("");
+        tf_dulceria_sabor.setText("");
+        cb_dulceria_cat.setSelectedIndex(0);
+    }
+    
+    public void limpiarAseo(){
+        tf_aseo_nombre.setText("");
+        tf_aseo_descripcion.setText("");
+        cb_aseo_categoria.setSelectedIndex(0);
     }
     
     public static void main(String args[]) {
@@ -1149,32 +1473,28 @@ public class Cinepolis extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_admin_agregar;
     private javax.swing.JButton bt_admin_guardar;
+    private javax.swing.JButton bt_aseo_agregar;
+    private javax.swing.JButton bt_aseo_guardar;
     private javax.swing.JButton bt_boleteria_agregar;
     private javax.swing.JButton bt_boleteria_guardar;
+    private javax.swing.JButton bt_dulceria_agregar;
+    private javax.swing.JButton bt_dulceria_guardar;
     private javax.swing.JButton bt_login_signIn;
     private javax.swing.JComboBox<String> cb_admin_puesto;
+    private javax.swing.JComboBox<String> cb_aseo_categoria;
     private javax.swing.JComboBox<String> cb_boleteria_cat;
-    private javax.swing.JComboBox<String> cb_boleteria_cat1;
-    private javax.swing.JComboBox<String> cb_boleteria_cat2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> cb_dulceria_cat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1196,12 +1516,6 @@ public class Cinepolis extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JDialog jd_admin;
     private javax.swing.JDialog jd_aseo;
     private javax.swing.JDialog jd_boleteria;
@@ -1209,10 +1523,18 @@ public class Cinepolis extends javax.swing.JFrame {
     private javax.swing.JDialog jd_login;
     private com.toedter.calendar.JDateChooser jdc_admin_fecha;
     private javax.swing.JList<String> jl_empleados;
+    private javax.swing.JMenuItem jmi_aseo;
+    private javax.swing.JMenuItem jmi_aseo_eliminar;
+    private javax.swing.JMenuItem jmi_aseo_modificar;
+    private javax.swing.JMenuItem jmi_aseo_ver;
     private javax.swing.JMenuItem jmi_boleteria;
     private javax.swing.JMenuItem jmi_boleteria_eliminar;
     private javax.swing.JMenuItem jmi_boleteria_modificar;
     private javax.swing.JMenuItem jmi_boleteria_ver;
+    private javax.swing.JMenuItem jmi_dulceria;
+    private javax.swing.JMenuItem jmi_dulceria_eliminar;
+    private javax.swing.JMenuItem jmi_dulceria_modificar;
+    private javax.swing.JMenuItem jmi_dulceria_ver;
     private javax.swing.JMenuItem jmi_eliminar;
     private javax.swing.JMenuItem jmi_empleados;
     private javax.swing.JMenuItem jmi_exit;
@@ -1220,19 +1542,25 @@ public class Cinepolis extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_logout;
     private javax.swing.JMenuItem jmi_modificar;
     private javax.swing.JMenuItem jmi_ver;
+    private javax.swing.JTree jt_aseo;
     private javax.swing.JTree jt_boleteria;
-    private javax.swing.JTree jt_boleteria1;
-    private javax.swing.JTree jt_boleteria2;
+    private javax.swing.JTree jt_dulceria;
     private javax.swing.JTree jt_empleados;
     private javax.swing.JPopupMenu ppm_admin;
+    private javax.swing.JPopupMenu ppm_aseo;
     private javax.swing.JPopupMenu ppm_boleteria;
+    private javax.swing.JPopupMenu ppm_dulceria;
     private javax.swing.JSpinner sp_boleteria_duracion;
     private javax.swing.JTextField tf_admin_email;
     private javax.swing.JTextField tf_admin_nombre;
     private javax.swing.JTextField tf_admin_password;
     private javax.swing.JTextField tf_admin_usuario;
+    private javax.swing.JTextField tf_aseo_descripcion;
+    private javax.swing.JTextField tf_aseo_nombre;
     private javax.swing.JTextField tf_boleteria_clasificacion;
     private javax.swing.JTextField tf_boleteria_nombre;
+    private javax.swing.JTextField tf_dulceria_nombre;
+    private javax.swing.JTextField tf_dulceria_sabor;
     private javax.swing.JPasswordField tf_login_password;
     private javax.swing.JTextField tf_login_usuario;
     // End of variables declaration//GEN-END:variables
@@ -1242,4 +1570,6 @@ public class Cinepolis extends javax.swing.JFrame {
     DefaultMutableTreeNode nodo_seleccionado;
     Empleado empleado_seleccionado;
     Pelicula pelicula_seleccionada;
+    Dulce dulce_seleccionado;
+    ImplementoLimpieza aseo_seleccionado;
 }
